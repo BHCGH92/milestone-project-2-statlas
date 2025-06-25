@@ -1,0 +1,64 @@
+/*Google Fonts Import*/
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --title-font: "Cal Sans", sans-serif;
+    --text-font: "Inter", sans-serif;
+    --darkest-purple: #10002B /*Dark purple/navy*/;
+    --deep-purple: #240046 /*Deep purple*/;
+    --dark-purple: #3C096C /* Dark purple*/;
+    --magenta: #5A189A /*Magenta*/;
+    --lavender: #9D4EDD /*Lavender*/;
+}
+
+/*Generic Styles*/
+
+body {
+    background-image: linear-gradient(180deg, var(--darkest-purple), var(--dark-purple));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: var(--title-font);
+    color: white;
+}
+
+p {
+    font-family: var(--text-font);
+    color: white;
+}
+
+/*Nav*/
+
+.nav-titlefont {
+    font-family: var(--title-font) !important;
+    color: white !important;
+    font-size: 1.5rem;
+}
+
+.nav-styling {
+    background: transparent !important;
+}
+
+.custom-menufont {
+    font-family: var(--text-font) !important;
+    color: white;
+    font-size: large;
+}
+
+/*Hamburger Icon to be white*/
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/*Remove permanent border*/
+.navbar-toggler { 
+    border: none;
+}
+
+/*Remove focus border*/
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
