@@ -29,6 +29,16 @@ p {
     color: white;
 }
 
+.custom-button  {
+    background-color: var(--magenta);
+    color: white;
+    border: 1px solid var(--magenta); 
+    border-radius: 25px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+    height: 45px;
+    width: 200px;
+}
+
 /*Nav*/
 
 .nav-titlefont {
@@ -61,4 +71,61 @@ p {
 .navbar-toggler:focus {
     outline: none;
     box-shadow: none;
+}
+
+/*Hero Section*/
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    min-height: 80vh; 
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+.hero-text {
+    text-align: center;
+}
+
+.hero-image img {
+    max-height: 500px;
+    max-width: 350px;
+}
+
+
+/*Info Section*/
+
+
+.info-title {
+    font-size: 1.5rem;
+}
+
+.info-text {
+    text-align: center;
+}
+
+.info-section-image {
+    text-align: center;
+}
+
+.info-section-image img {
+    max-width: 200px;
+}
+
+.info-hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    width: 90%;
+}
+
+/*Media Queries*/
+
+@media screen and (min-width: 768px) {
+    .custom-button {
+        width: 300px; /* Wider button on bigger screens */
+    }
+    .info-title {
+        font-size: 1.5rem;
+    }
 }
