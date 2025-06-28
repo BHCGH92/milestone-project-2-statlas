@@ -3,6 +3,7 @@
 import { transformCountryData } from '../scripts/api.js';
 
 describe('transformCountryData', () => {
+    /* Test for correctly formatted data */
     it("should transform country data correctly", () => {
         const mockApiData = {
             name: {
@@ -29,8 +30,27 @@ describe('transformCountryData', () => {
         expect(result.capital).toBe("Paris");
         expect(result.currencyName).toBe("Euro");
         expect(result.currencySymbol).toBe("€");
-        expect(result.flagsPng).toBe("https://flagcdn.com/w320/fr.png");
-        expect(result.flagsAlt).toBe("The flag of France is composed of three vertical bands of blue, white and red.");
+        expect(result.flagPng).toBe("https://flagcdn.com/w320/fr.png");
+        expect(result.flagAlt).toBe("The flag of France is composed of three vertical bands of blue, white and red.");
 
+    });
+    /* Test for missign information */
+    it("Should handle data with no capital, currency and currency symbol", () => {
+        const mockCountryWithNoCapital = {
+            name: {
+                common: "Antarctica"
+            },
+            currencies: {
+            },
+            flags: {
+            }
+        };
+        const result = transformCountryData(mockCountryWithNoCapital);
+        expect(result.name).toBe("Antarctica");
+        expect(result.capital).toBe("No capital");
+        expect(result.currencyName).toBe("No currency");
+        expect(result.currencySymbol).toBe("No symbol");
+        expect(result.flagPng).toBe("No flag image");
+        expect(result.flagAlt).toBe("No flag description");
     });
 });
