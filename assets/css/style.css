@@ -88,9 +88,9 @@ p {
     text-align: center;
 }
 
-.hero-image img {
-    max-height: 500px;
-    max-width: 350px;
+.img-fluid {
+  max-width: 100%;
+  height: auto;
 }
 
 
@@ -120,6 +120,15 @@ p {
 }
 
 /*Media Queries*/
+
+@media screen and (min-width: 425px) {
+    /*Stops the image from getting to big after smaller mobile screens*/
+ .hero-image img {
+    max-height: 500px;
+    max-width: 350px;
+    } 
+}
+
 
 @media screen and (min-width: 768px) {
     .custom-button {
