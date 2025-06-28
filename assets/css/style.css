@@ -127,6 +127,14 @@ p {
     max-width: 80%;
 }
 
+/* Footer */
+
+.customfooter {
+    background-image: linear-gradient(180deg, transparent, var(--darkest-purple));
+    margin-top: 0;
+    padding: 4rem 2rem;
+}
+
 /*Media Queries*/
 
 @media screen and (min-width: 425px) {
