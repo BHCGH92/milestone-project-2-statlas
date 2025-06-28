@@ -110,20 +110,28 @@ p {
 }
 
 .info-section-image img {
+    max-height: 200px;
     max-width: 200px;
 }
 
 .info-hr {
     border: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
-    width: 90%;
+    width: 70%;
+}
+
+/*Country Search Section*/
+
+.countrysearchbar {
+    border-radius: 25px;
+    max-width: 80%;
 }
 
 /*Media Queries*/
 
 @media screen and (min-width: 425px) {
     /*Stops the image from getting to big after smaller mobile screens*/
- .hero-image img {
+    .hero-image img {
     max-height: 500px;
     max-width: 350px;
     } 

@@ -65,7 +65,7 @@
         <section id="infosectionone">
             <div id="infosectioncontainerone" class="container flex info-section">
                 <div class="row align-items-center justify-content-center">
-                    <div id="infotextone" class="col-12 col-md-6 d-flex align-items-center info-text pt-5">
+                    <div id="infotextone" class="col-12 col-md-5 d-flex align-items-center info-text pt-5">
                         <div>
                             <h1 class="info-title">Country Search</h1>
                             <p>Want to learn more about a country? Enter it into our search engine and it will return
@@ -73,7 +73,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="searchbadge" class="col-12 col-md-4 info-section-image">
+                    <div id="searchbadge" class="col-12 col-md-3 info-section-image">
                         <img src="/assets/images/searchbadge.png" alt="a golden flag badge with a question mark"
                             class="img-fluid">
                     </div>
@@ -82,7 +82,7 @@
             </div>
             <div id="infosectioncontainertwo" class="container flex info-section">
                 <div class="row align-items-center justify-content-center">
-                    <div id="infotexttwo" class="col-12 col-md-6 d-flex align-items-center info-text pt-5">
+                    <div id="infotexttwo" class="col-12 col-md-5 d-flex align-items-center info-text pt-5">
                         <div>
                             <h1 class="info-title">Flag Game</h1>
                             <p>Play our flag game and as the game grows over the upcoming months you can earn
@@ -90,7 +90,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="flagbadge" class="col-12 col-md-4 info-section-image">
+                    <div id="flagbadge" class="col-12 col-md-3 info-section-image">
                         <img src="/assets/images/flagbadge.png" alt="a golden flag badge with binoculars"
                             class="img-fluid">
                     </div>
@@ -99,23 +99,44 @@
             </div>
             <div id="infosectioncontainerthree" class="container flex info-section">
                 <div class="row align-items-center justify-content-center">
-                    <div id="infotextthree" class="col-12 col-md-6 d-flex align-items-center info-text pt-5">
+                    <div id="infotextthree" class="col-12 col-md-5 d-flex align-items-center info-text pt-5">
                         <div>
                             <h1 class="info-title">Randomiser - Coming Soon</h1>
-                            <p>Coming soon... We have the new randomiser feature, that will allow you to just request a random country
+                            <p>Coming soon... We have the new randomiser feature, that will allow you to just request a
+                                random country
                                 and find out all about it!
                             </p>
                         </div>
                     </div>
-                    <div id="randombadge" class="col-12 col-md-4 info-section-image">
-                        <img src="/assets/images/randombadge.png" alt="a golden flag badge with multi directional arrows"
-                            class="img-fluid">
+                    <div id="randombadge" class="col-12 col-md-3 info-section-image">
+                        <img src="/assets/images/randombadge.png"
+                            alt="a golden flag badge with multi directional arrows" class="img-fluid">
                     </div>
+                    <hr class="info-hr align-items-center">
                 </div>
             </div>
         </section>
-        <section class="countrysearch">
-            <div>
+        <section class="countrysearch pt-5">
+            <div class="container flex">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 align-items-center text-center">
+                        <h1>Country Search.</h1>
+                        <p>
+                            Enter a country name below to learn more about it. You can find information such as the
+                            capital, population, languages spoken, and more. This feature is perfect for students,
+                            travelers, or anyone curious about the world!
+                        </p>
+                    </div>
+                    <div class="container mt-1">
+                        <form>
+                        <div class="row align-items-center justify-content-center">
+                        <input type="search" class="form-control col-md-8 countrysearchbar" id="country-search" placeholder="Enter a country name..." 
+                            aria-label="Search for a country">
+                        <button class="custom-button col-md-4 mt-3" type="submit">Search Away!</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
         <!--Footer-->
