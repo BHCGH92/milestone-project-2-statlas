@@ -51,6 +51,15 @@ p {
     background: transparent !important;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .custom-menufont {
     font-family: var(--text-font) !important;
     color: white;
@@ -71,6 +80,19 @@ p {
 .navbar-toggler:focus {
     outline: none;
     box-shadow: none;
+}
+
+/* Nav Bar Scroll Styling */
+
+#navbar {
+    background: transparent !important;
+    transition: background-color 0.4s ease-out, backdrop-filter 0.4s ease-out;
+}
+
+#navbar.scrolled {
+    background-color: rgba(90, 24, 154, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari browser support */
 }
 
 /*Hero Section*/
@@ -152,5 +174,17 @@ p {
     }
     .info-title {
         font-size: 1.5rem;
+    }
+}
+
+/*Gives the hamburger menu the blur background*/
+@media (max-width: 991.98px) {
+    .navbar-collapse.collapse.show {
+        background-color: rgba(90, 24, 154, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-top: 0.5rem;
     }
 }
