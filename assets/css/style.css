@@ -39,6 +39,13 @@ p {
     width: 200px;
 }
 
+.custom-button:hover {
+    background-color: var(--lavender);
+    color: white;
+    border: 1px solid var(--lavender);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+}
+
 /*Nav*/
 
 .nav-titlefont {
