@@ -12,9 +12,10 @@ searchForm.addEventListener('submit', async (event) => {
 
     clearDisplay(); /* Clear previous results */
     toggleLoader(true); /* Show the loader - for slower speeds */
+    // debugger;
 
     if(!countryName) {
-        showError('Please enter a country name.', 'warning');
+        showMessage('Please enter a country name.', 'warning');
         toggleLoader(false);
         return;
     }
@@ -24,8 +25,8 @@ searchForm.addEventListener('submit', async (event) => {
         displayCountry(countryData); /* Display the country data */
     } catch (error){
         console.log("An error was caught in main.js:", error);
-        const niceMessage = error.niceMessage;
-        showMessage(niceMessage, 'error'); /* Display the error message */
+        const message = error.message;
+        showMessage(message, 'error'); /* Display the error message */
     } finally {
         toggleLoader(false); /* Hide the loader - this always runs*/
     }

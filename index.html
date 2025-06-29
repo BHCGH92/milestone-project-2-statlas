@@ -132,12 +132,15 @@
                         <form id="country-search-form">
                             <div class="row align-items-center justify-content-center">
                                 <input type="search" class="form-control col-md-8 countrysearchbar" id="country-search"
-                                    placeholder="Enter a country name..." aria-label="Search for a country" name="country-search">
+                                    placeholder="Enter a country name..." aria-label="Search for a country"
+                                    name="country-search">
                                 <button class="custom-button col-md-4 mt-3" type="submit">Search Away!</button>
                             </div>
                         </form>
                     </div>
-                    <div id="loader">
+                    <div id="country-loader" class="spinner-grow spinner-grow-md text-light" role="status"
+                        style="display: none;">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                     <div id="countryDisplay">
                     </div>

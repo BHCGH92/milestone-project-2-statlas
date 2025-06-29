@@ -1,7 +1,7 @@
 /* Get the div id's where the information will be shown */
 const countryDisplay = document.getElementById("countryDisplay");
 const errorHandle = document.getElementById("errorHandle");
-const loader = document.getElementById("loader");
+const loader = document.getElementById('country-loader');
 
 
 /* Clear down the display before presenting a new one */
@@ -15,7 +15,7 @@ export function clearDisplay() {
  * @param {boolean} visible - true to show the loader, false to hide it
  */
 export function toggleLoader(visible) {
-    loader.style.display = visible ? "flex" : "none";
+  loader.style.display = visible ? 'block' : 'none';
 }
 
 /** JSDoc comment - function showMessage
