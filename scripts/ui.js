@@ -54,6 +54,7 @@ export function displayCountry(countryData) {
                       <div class="country-info-wrapper">
                           <h2>${countryData.name}</h2>
                           <p><strong>Population:</strong> ${countryData.population.toLocaleString()}</p>
+                          <p><strong>Languages:</strong> ${countryData.languages}</p>
                           <p><strong>Currency:</strong> ${countryData.currencyName} (${countryData.currencySymbol})</p>
                           <p><strong>Capital City:</strong> ${countryData.capital}</p>
                       </div>

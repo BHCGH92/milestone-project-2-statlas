@@ -10,6 +10,7 @@ export function transformCountryData(countryData) {
         capital: countryData.capital?.[0] ?? "No capital",
         currencyName: Object.values(countryData.currencies ?? {})[0]?.name ?? "No currency",
         currencySymbol: Object.values(countryData.currencies ?? {})[0]?.symbol ?? "No symbol",
+        languages: Object.values(countryData.languages ?? {}).join(", ") || "No languages",
         population: countryData.population ?? "N/A",
         flagPng: countryData.flags?.png ?? "No flag image",
         flagAlt: countryData.flags?.alt ?? "No flag description"
