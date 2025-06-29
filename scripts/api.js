@@ -1,5 +1,5 @@
 /** JSDoc comment - transformCountryData
-* Transforms the country data from the API into a more usable format.
+* Transforms the country data from the Restcountries API into a more usable format.
 * @param {object} countryData - The raw country data from the API.
 * @returns {object} - Transformed country data with specific fields.
 */
@@ -22,21 +22,27 @@ export function transformCountryData(countryData) {
  */
 
 export async function fetchCountryByName(countryName) {
+    /* Call API and await response */
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
+        /* Check if the response is ok, if not handle it and throw an error */
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const errorBody = await response.json();
+            const errorMessage = errorBody.message || `HTTP error! status: ${response.status}`;
+            throw new Error(errorMessage);
         }
+
         const dataArray = await response.json();
 
         if (!dataArray || dataArray.length === 0) {
             throw new Error(`No results for country "${countryName}"`);
         }
-
+        /* Successful - Transform data */
         return transformCountryData(dataArray[0]);
-        
+
     } catch (error) {
+        /* Error section */
         console.error("Error fetching country data:", error);
-        return null;
+        throw error;
     }
 };

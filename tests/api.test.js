@@ -92,4 +92,12 @@ describe('fetchCountryByName', () => {
         expect(result.name).toBe('France');
         expect(result.capital).toBe('Paris');
     });
+    it("should throw an error if the country is not found", async () => {
+        fetch.mockResolvedValueOnce({
+            ok: false,
+            status: 404,
+            json: async () => ({ message: "Country not found - Check your spelling." })
+        });
+        await expect(fetchCountryByName('UnknownCountry')).rejects.toThrow("Country not found - Check your spelling.");
+    });
 });
