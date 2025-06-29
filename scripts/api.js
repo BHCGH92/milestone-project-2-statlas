@@ -1,4 +1,4 @@
-/** JSDoc comment - transformCountryData
+/** JSDoc comment - function transformCountryData
 * Transforms the country data from the Restcountries API into a more usable format.
 * @param {object} countryData - The raw country data from the API.
 * @returns {object} - Transformed country data with specific fields.
@@ -15,7 +15,7 @@ export function transformCountryData(countryData) {
     };
 }
 
-/** JSDoc comment - fetchCountryByName
+/** JSDoc comment - function fetchCountryByName
  * Fetches country data by name from the API, transforms it, and returns the result.
  * @param {string} countryName - The name of the country to fetch.
  * @returns {Promise<object>} - A promise that resolves to the transformed country data.
