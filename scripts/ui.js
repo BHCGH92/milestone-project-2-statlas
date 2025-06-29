@@ -1,6 +1,6 @@
 /* Get the div id's where the information will be shown */
-const countryDisplay = document.getElementById("#countryDisplay");
-const errorHandle = document.getElementById("#errorHandle");
+const countryDisplay = document.getElementById("countryDisplay");
+const errorHandle = document.getElementById("errorHandle");
 const loader = document.getElementById("loader");
 
 
@@ -35,7 +35,7 @@ export function showMessage(message, type = "error") {
           </div>
       </div>`;
 
-      errorHandleContainer.innerHTML = messageHtml;
+      errorHandle.innerHTML = messageHtml;
 };
 
 /** JSDoc comment - function displayCountry
@@ -47,19 +47,19 @@ export function displayCountry(countryData) {
     <div class="row justify-content-center mt-3">
           <div class="col-md-8">
               <div class="country-wrapper">
-                  <h2>${country.name}</h2>
+                  <h2>${countryData.name}</h2>
                   <div class="country-display-card">
                       <div>
-                          <img src="${country.flagPng}" alt="${country.flagAlt}" class="img-fluid mb-3 mt-3">
+                          <img src="${countryData.flagPng}" alt="${countryData.flagAlt}" class="img-fluid mb-3 mt-3">
                       </div>
                       <div class="country-info-wrapper">
-                          <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-                          <p><strong>Currency:</strong> ${country.currencyName} (${country.currencySymbol})</p>
-                          <p><strong>Capital City:</strong> ${country.capital}</p>
+                          <p><strong>Population:</strong> ${countryData.population.toLocaleString()}</p>
+                          <p><strong>Currency:</strong> ${countryData.currencyName} (${countryData.currencySymbol})</p>
+                          <p><strong>Capital City:</strong> ${countryData.capital}</p>
                       </div>
                   </div>
               </div>
           </div>
       </div>`
-      countryDisplayContainer.innerHTML = countryHtml;
+      countryDisplay.innerHTML = countryHtml;
 };  
