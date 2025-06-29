@@ -15,7 +15,7 @@ export function clearDisplay() {
  * @param {boolean} visible - true to show the loader, false to hide it
  */
 export function toggleLoader(visible) {
-  loader.style.display = visible ? 'block' : 'none';
+    loader.style.display = visible ? 'block' : 'none';
 }
 
 /** JSDoc comment - function showMessage
@@ -35,7 +35,7 @@ export function showMessage(message, type = "error") {
           </div>
       </div>`;
 
-      errorHandle.innerHTML = messageHtml;
+    errorHandle.innerHTML = messageHtml;
 };
 
 /** JSDoc comment - function displayCountry
@@ -47,12 +47,12 @@ export function displayCountry(countryData) {
     <div class="row justify-content-center mt-3">
           <div class="col-md-8">
               <div class="country-wrapper">
-                  <h2>${countryData.name}</h2>
                   <div class="country-display-card">
                       <div>
                           <img src="${countryData.flagPng}" alt="${countryData.flagAlt}" class="img-fluid mb-3 mt-3">
                       </div>
                       <div class="country-info-wrapper">
+                          <h2>${countryData.name}</h2>
                           <p><strong>Population:</strong> ${countryData.population.toLocaleString()}</p>
                           <p><strong>Currency:</strong> ${countryData.currencyName} (${countryData.currencySymbol})</p>
                           <p><strong>Capital City:</strong> ${countryData.capital}</p>
@@ -61,5 +61,5 @@ export function displayCountry(countryData) {
               </div>
           </div>
       </div>`
-      countryDisplay.innerHTML = countryHtml;
+    countryDisplay.innerHTML = countryHtml;
 };  
