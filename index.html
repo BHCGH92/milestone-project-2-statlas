@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Statlas" content="Explore the world with Statlas. 
+    Search for country statistics, play our interactive flag game, and learn about the globe one stat at a time.">
     <!--Favicon-->
     <link rel="icon" type="image/svg+xml" href="/assets/images/map-favicon.svg">
     <title>Statlas | Home</title>
@@ -55,7 +57,9 @@
                             by simply searching for a country to learn about!
                         </p>
                         <div>
-                            <button class="custom-button">Search Away!</button>
+                            <a href="#countrysearch" class="btn btn-primary custom-button">
+                                Search Away!
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -67,8 +71,8 @@
                 <div class="row align-items-center justify-content-center">
                     <div id="infotextone" class="col-12 col-md-5 d-flex align-items-center info-text pt-5">
                         <div>
-                            <h1 class="info-title">Country Search</h1>
-                            <p>Want to learn more about a country? Enter it into our search engine and it will return
+                            <h2 class="info-title">Country Search</h2>
+                            <p>Want to learn more about a country? Enter the name into our search bar and it will return
                                 stats such as currency, population, languages and much more!
                             </p>
                         </div>
@@ -84,7 +88,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div id="infotexttwo" class="col-12 col-md-5 d-flex align-items-center info-text pt-5">
                         <div>
-                            <h1 class="info-title">Flag Game</h1>
+                            <h2 class="info-title">Flag Game</h2>
                             <p>Play our flag game and as the game grows over the upcoming months you can earn
                                 badges, like our golden flag badge.
                             </p>
@@ -101,10 +105,9 @@
                 <div class="row align-items-center justify-content-center">
                     <div id="infotextthree" class="col-12 col-md-5 d-flex align-items-center info-text pt-5">
                         <div>
-                            <h1 class="info-title">Randomiser - Coming Soon</h1>
-                            <p>Coming soon... We have the new randomiser feature, that will allow you to just request a
-                                random country
-                                and find out all about it!
+                            <h2 class="info-title">Randomiser</h2>
+                            <p>Part of the country search feature, we have the new randomiser feature, it allows you to press a button
+                                and it will return a random country for you to learn about.
                             </p>
                         </div>
                     </div>
@@ -117,11 +120,11 @@
             </div>
         </section>
         <!--Country Search Section-->
-        <section class="countrysearch pt-5">
+        <section class="countrysearch pt-5" id="countrysearch">
             <div class="container flex">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12 align-items-center text-center">
-                        <h1>Country Search.</h1>
+                        <h2>Country Search.</h2>
                         <p>
                             Enter a country name below to learn more about it. You can find information such as the
                             capital, population, languages spoken, and more. This feature is perfect for students,
@@ -133,6 +136,7 @@
                             <div class="row justify-content-center g-2">
 
                                 <div class="col-12">
+                                    <label for="country-search" class="visually-hidden">Search or find a random country</label> 
                                     <input type="search" class="form-control" id="country-search"
                                         placeholder="Enter a country name..." aria-label="Search for a country"
                                         name="country-search">
@@ -167,11 +171,7 @@
                 <div class="row justify-content-center">
                     <hr class="info-hr align-items-center">
                     <div>
-                        <h1>Statlas.</h1>
-                        <p>
-                            We hope you enjoyed using Statlas as much as we enjoyed making it! If you have any
-                            suggestions or feedback, please feel free to reach out to us on the details below.
-                        </p>
+                        <h2>Statlas.</h2>
                     </div>
                     <div class="col-12 col-md-6">
                         <p class="mt-3">Address:</p>
@@ -183,11 +183,11 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <p class="mt-3">Facebook:</p>
-                        <p>Statlas Facebook Page</p>
+                        <p><a href="https://www.facebook.com">Statlas Facebook Page</a></p>
                         <p class="mt-3">Instagram:</p>
-                        <p>Statlas Instagram Page</p>
+                        <p><a href="https://www.instagram.com">Statlas Instagram Page</a></p>
                         <p class="mt-3">LinkedIn</p>
-                        <p>Statlas LinkedIn Page</p>
+                        <p><a href="https://www.linkedin.com">Statlas LinkedIn Page</a></p>
                     </div>
                 </div>
             </div>

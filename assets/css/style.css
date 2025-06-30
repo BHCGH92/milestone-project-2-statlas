@@ -24,6 +24,11 @@ h1 {
     color: white;
 }
 
+h2 {
+    font-family: var(--title-font);
+    color: white;
+}
+
 p {
     font-family: var(--text-font);
     color: white;
@@ -208,6 +213,11 @@ p {
     background-image: linear-gradient(180deg, transparent, var(--darkest-purple));
     margin-top: 0;
     padding: 4rem 2rem;
+}
+
+.customfooter a {
+    color: white;
+    text-decoration: underline;
 }
 
 /*Media Queries*/
