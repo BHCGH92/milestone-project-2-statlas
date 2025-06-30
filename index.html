@@ -128,13 +128,25 @@
                             travelers, or anyone curious about the world!
                         </p>
                     </div>
-                    <div class="container mt-1">
+                    <div class="container mt-4">
                         <form id="country-search-form">
-                            <div class="row align-items-center justify-content-center">
-                                <input type="search" class="form-control col-md-8 countrysearchbar" id="country-search"
-                                    placeholder="Enter a country name..." aria-label="Search for a country"
-                                    name="country-search">
-                                <button class="custom-button col-md-4 mt-3 mb-3" type="submit">Search Away!</button>
+                            <div class="row justify-content-center g-2">
+
+                                <div class="col-12">
+                                    <input type="search" class="form-control" id="country-search"
+                                        placeholder="Enter a country name..." aria-label="Search for a country"
+                                        name="country-search">
+                                </div>
+
+                                <div class="col-12 col-md-3 d-flex justify-content-center">
+                                    <button class="custom-button" type="submit">Search Away!</button>
+                                </div>
+
+                                <div class="col-12 col-md-3 d-flex justify-content-center">
+                                    <button class="custom-button" id="random-country-btn"
+                                        type="button">Randomise</button>
+                                </div>
+
                             </div>
                         </form>
                     </div>
@@ -142,7 +154,7 @@
                         style="display: none;">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <div id="countryDisplay">
+                    <div id="countryDisplay" class="mt-3">
                     </div>
                     <div id="errorHandle">
                     </div>
