@@ -12,7 +12,7 @@ searchForm.addEventListener('submit', async (event) => {
 
     clearDisplay(); /* Clear previous results */
     toggleLoader(true); /* Show the loader - for slower speeds */
-    // debugger;
+    // debugger; - Uncomment to debug to see the loader in action
 
     if(!countryName) {
         showMessage('Please enter a country name.', 'warning');
@@ -25,7 +25,7 @@ searchForm.addEventListener('submit', async (event) => {
         displayCountry(countryData); /* Display the country data */
     } catch (error){
         console.log("An error was caught in main.js:", error);
-        const message = error.message;
+        const message = "There was an issue fetching the country data, check your spelling and try again.";
         showMessage(message, 'error'); /* Display the error message */
     } finally {
         toggleLoader(false); /* Hide the loader - this always runs*/

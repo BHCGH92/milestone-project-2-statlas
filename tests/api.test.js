@@ -1,12 +1,14 @@
 /* Tests for api.js */
 
-import { transformCountryData, fetchCountryByName } from '../scripts/api.js';
+import {
+    transformCountryData,
+    fetchCountryByName,
+    fetchCountryList,
+    getRandomCountry
+} from '../scripts/api.js';
 
-/* Ensure no real calls are made */
-global.fetch = jest.fn();
-/* Clear mock calls */
 beforeEach(() => {
-    fetch.mockClear();
+    fetch.resetMocks(); // Use resetMocks() provided by jest-fetch-mock
 });
 
 describe('transformCountryData', () => {
@@ -83,21 +85,52 @@ describe('fetchCountryByName', () => {
                 alt: "The flag of France is composed of three vertical bands of blue, white and red."
             }
         };
-        fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => [mockApiData]
-        });
+        fetch.mockResponseOnce(JSON.stringify([mockApiData]));
         const result = await fetchCountryByName('France');
         expect(fetch).toHaveBeenCalledWith('https://restcountries.com/v3.1/name/France');
         expect(result.name).toBe('France');
         expect(result.capital).toBe('Paris');
     });
     it("should throw an error if the country is not found", async () => {
-        fetch.mockResolvedValueOnce({
-            ok: false,
-            status: 404,
-            json: async () => ({ message: "Country not found - Check your spelling." })
-        });
-        await expect(fetchCountryByName('UnknownCountry')).rejects.toThrow("Country not found - Check your spelling.");
+        const mockError = { message: "Not Found." };
+        fetch.mockResponseOnce(JSON.stringify(mockError), { status: 404 });
+        await expect(fetchCountryByName('UnknownCountry')).rejects.toThrow("Not Found.");
+    });
+});
+
+describe('fetchCountryList', () => {
+    it("should fetch a list of countries", async () => {
+        const mockApiData = [
+            { name: { common: "France" } },
+            { name: { common: "Germany" } }
+        ];
+        fetch.mockResponseOnce(JSON.stringify(mockApiData));
+        const result = await fetchCountryList();
+        expect(fetch).toHaveBeenCalledWith('https://restcountries.com/v3.1/all?fields=name');
+        expect(result).toEqual(["France", "Germany"]);
+    });
+
+    it("should throw an error if the fetch fails", async () => {
+        fetch.mockRejectOnce(new Error("Network failure"));
+        await expect(fetchCountryList()).rejects.toThrow("Network failure");
+    });
+});
+
+describe('getRandomCountry', () => {
+    it('should return a single country name from the provided list', () => {
+        const mockCountryList = ["France", "Germany", "Spain"];
+        const result = getRandomCountry(mockCountryList);
+        expect(mockCountryList).toContain(result);
+        expect(typeof result).toBe('string');
+    });
+    it('should return undefined when given an empty array', () => {
+        const mockCountryList = [];
+        const result = getRandomCountry(mockCountryList);
+        expect(result).toBeUndefined();
+    });
+
+    it('should return undefined when given null or undefined', () => {
+        expect(getRandomCountry(null)).toBeUndefined();
+        expect(getRandomCountry(undefined)).toBeUndefined();
     });
 });
