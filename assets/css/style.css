@@ -207,6 +207,21 @@ p {
   justify-content: center;
 }
 
+/* Flag Game Card */
+.flag-game-card {
+  background-color: var(--deep-purple);
+  color: #f3f3f3;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(157, 78, 221, 0.4);
+  border: 1px solid var(--dark-purple);
+  transition: box-shadow 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80%px;
+}
+
 /* Footer */
 
 .customfooter {
