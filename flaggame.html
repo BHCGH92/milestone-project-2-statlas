@@ -73,15 +73,32 @@
                         <div class="col-md-8">
                             <div class="flag-game-card">
                                 <div class="">
-                                    <div id="flaggameflagimage">
+                                    <div id="flaggameflagimage" class="text-center">
+                                        <img id="current-flag-img" src="" alt="Country Flag"
+                                            class="img-fluid mb-3 mt-3 d-none">
                                     </div>
-                                    <div>
+                                    <div class="flag-game-controls text-center">
+                                        <button id="play-game-btn" class="btn custom-button">Play Game</button>
+
+                                        <div id="guess-section" class="mt-3 d-none">
+                                            <input type="text" id="country-guess-input" class="form-control mb-2"
+                                                placeholder="Guess the country name">
+                                            <button id="submit-guess-btn" class="btn custom-button">Submit
+                                                Guess</button>
+                                        </div>
+                                        <div id="game-message" class="mt-3">
+                                        </div>
+
+                                        <div class="score-display mt-3">
+                                            <h3>Score: <span id="current-score">0</span></h3>
+                                        </div>
+                                        <div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
         </section>
         <footer class="customfooter text-white text-center">
             <div class="container">
