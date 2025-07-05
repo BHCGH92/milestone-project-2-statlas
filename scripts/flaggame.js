@@ -161,3 +161,19 @@ function checkGuess() {
 
 /** EVENT LISTENERS */
 
+playButton.addEventListener('click', startNewRound);
+
+submitGuessButton.addEventListener('click', checkGuess);
+
+countryGuessInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();  /* Prevent form submission */
+        submitGuessButton.click();  /* Trigger the guess submission */
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateScoreDisplay();
+    toggleGameControls(false);
+    toggleFlagGameLoader(false);
+});
