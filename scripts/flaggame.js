@@ -92,3 +92,72 @@ function showMessage(message, type = "info") {
 
 /** GAME LOGIC FUNCTIONS */
 
+/**
+ * Initiate new game
+ * Clears relevant sections, fetches a flag and prepares the game for play.
+ */
+async function startNewRound() {
+    clearGameDisplay();
+    toggleGameControls(false);
+    toggleFlagGameLoader(true);
+
+    try {
+        const countryData = await fetchRandomCountry();
+        currentCountry = countryData;
+        displayFlag(countryData.flagPng, countryData.flagAlt);
+        toggleGameControls(true);
+        countryGuessInput.focus();
+        showMessage(`Guess the country for the flag shown!`, 'info');
+
+    } catch (error) {
+        console.error('Error fetching country data:', error);
+        showMessage('Failed to load flag. Please try again later.', 'error');
+        toggleGameControls(false);
+    } finally {
+        toggleFlagGameLoader(false);
+    }
+};
+
+/**
+ * Check the users guess against the current country
+ */
+
+function checkGuess() {
+    /* Prevent guess if no flag is shown. */
+    if (!currentCountry) {
+        showMessage('No flag to guess. Please start a new game.', 'warning');
+        return;
+    }
+
+    const userGuess = countryGuessInput.value.trim();
+    if (!userGuess) {
+        showMessage('Please enter a guess.', 'warning');
+        countryGuessInput.classList.add('is-invalid');
+        return;
+    }
+
+    const correctName = currentCountry.name.toLowerCase();
+    const guessedName = userGuess.toLowerCase();
+
+    if (guessedName === correctName) {
+        score++;
+        updateScoreDisplay();
+        showMessage(`Correct! The country is ${currentCountry.name}.`, 'success');
+        countryGuessInput.classList.remove('is-invalid');
+        countryGuessInput.classList.add('is-valid');
+        toggleGameControls(false);
+        playButton.textContent = 'Play next flag!'
+    } else {
+        score = Math.max(0, score - 1);  /* Ensure score doesn't go below 0 */
+        updateScoreDisplay();
+        showMessage(`Incorrect! The correct answer was ${currentCountry.name}.`, 'error');
+        countryGuessInput.classList.remove('is-valid');
+        countryGuessInput.classList.add('is-invalid');
+        toggleGameControls(false);
+        playButton.textContent = "Try Another Flag";
+    }
+
+};
+
+/** EVENT LISTENERS */
+
