@@ -65,3 +65,30 @@ function toggleGameControls(enable) {
 function updateScoreDisplay() {
     currentScore.textContent = score;
 };
+
+/** JSDOC comment - function showMessage
+ * Displays a message in the game message area.
+ * @param {string} message - The message to display.
+ * @param {string} type - The type of message.
+ */
+function showMessage(message, type = "info") {
+    const alertClass = {
+        'success': 'alert-success',
+        'error': 'alert-danger',
+        'info': 'alert-info',
+        'warning': 'alert-warning'
+    } [type] || 'alert-info'; /* Default to info */
+
+    const messageHtml = `
+    <div class="row justify-content-center mt-3">
+            <div class="col-md-10">
+                <div class="alert ${alertClass}" role="alert">
+                    ${message}
+                </div>
+            </div>
+        </div>`;
+    gameMessageDiv.innerHTML = messageHtml;
+}
+
+/** GAME LOGIC FUNCTIONS */
+
