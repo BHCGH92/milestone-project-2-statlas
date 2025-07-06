@@ -1,8 +1,8 @@
 /* Import functions from our api.js and ui.js files */
-import { fetchCountryByName, fetchRandomCountry, transformCountryData } from './api.js';
+import { fetchCountryByName, fetchCountryByNameExact, fetchRandomCountry, transformCountryData } from './api.js';
 import { clearDisplay, displayCountry, showMessage, toggleLoader } from './ui.js';
 
-document.addEventListener('DOMContentLoaded', () => { // Add this
+document.addEventListener('DOMContentLoaded', () => {
 
 const searchForm = document.getElementById('country-search-form');
 const randomCountryBtn = document.getElementById('random-country-btn');
@@ -25,11 +25,11 @@ searchForm.addEventListener('submit', async (event) => {
     }
 
     try {
-        const countryData = await fetchCountryByName(countryName);
+        const countryData = await fetchCountryByNameExact(countryName);
         displayCountry(countryData); /* Display the country data */
     } catch (error) {
         console.log("An error was caught in main.js:", error);
-        const message = "There was an issue fetching the country data, check your spelling and try again.";
+        const message = "There was an issue fetching the country data, check your spelling and try again. The spelling must be exact.";
         showMessage(message, 'error'); /* Display the error message */
     } finally {
         toggleLoader(false); /* Hide the loader - this always runs*/
@@ -37,7 +37,7 @@ searchForm.addEventListener('submit', async (event) => {
 
 });
 
-/* Initiate ranomiser and present the data to user */
+/* Initiate randomiser and present the data to user */
 randomCountryBtn.addEventListener('click', async () => {
     clearDisplay();
     toggleLoader(true);

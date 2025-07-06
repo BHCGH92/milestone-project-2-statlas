@@ -49,6 +49,38 @@ export async function fetchCountryByName(countryName) {
     }
 };
 
+/** JSDoc comment - function fetchCountryByNameExact
+ * Fetches country data by name from the API, transforms it, and returns the result exact matches only for home page search.
+ * @param {string} countryName - The name of the country to fetch.
+ * @returns {Promise<object>} - A promise that resolves to the transformed country data.
+ */
+
+export async function fetchCountryByNameExact(countryName) {
+    /* Call API and await response */
+    try {
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+        /* Check if the response is ok, if not handle it and throw an error */
+        if (!response.ok) {
+            const errorBody = await response.json();
+            const errorMessage = errorBody.message || `HTTP error! status: ${response.status}`;
+            throw new Error(errorMessage);
+        }
+
+        const dataArray = await response.json();
+
+        if (!dataArray || dataArray.length === 0) {
+            throw new Error(`No results for country "${countryName}"`);
+        }
+        /* Successful - Transform data */
+        return transformCountryData(dataArray[0]);
+
+    } catch (error) {
+        /* Error section */
+        console.error("Error fetching country data:", error);
+        throw error;
+    }
+};
+
 /** JSDoc comment - function fetchCountryList
  * Call the api to fetch a list of countries
  * @returns {Promise<Array<string>>} - A promise that resolves to an array of country names.
