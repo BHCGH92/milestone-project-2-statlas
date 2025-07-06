@@ -76,6 +76,7 @@
                                     <div id="flaggameflagimage" class="text-center">
                                         <img id="current-flag-img" src="" alt="Country Flag"
                                             class="img-fluid mb-3 mt-3 d-none">
+                                            <div id="country-loader" class="spinner-grow spinner-grow-md text-light d-none"></div> </div>
                                     </div>
                                     <div class="flag-game-controls text-center">
                                         <button id="play-game-btn" class="btn custom-button">Play Game</button>
@@ -133,11 +134,11 @@
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
         </script>
     <!--Custom Scripts-->
-    <script src="scripts/scripts.js">
+    <script src="scripts/scripts.js" defer>
     </script>
-    <script src="scripts/main.js" type="module">
-    </script>
-    <script src="scripts/flaggame.js" type="module">
+    <!-- <script src="scripts/main.js" type="module" defer>
+    </script> -->
+    <script src="scripts/flaggame.js" type="module" defer>
     </script>
 </body>
 

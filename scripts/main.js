@@ -2,6 +2,8 @@
 import { fetchCountryByName, fetchRandomCountry, transformCountryData } from './api.js';
 import { clearDisplay, displayCountry, showMessage, toggleLoader } from './ui.js';
 
+document.addEventListener('DOMContentLoaded', () => { // Add this
+
 const searchForm = document.getElementById('country-search-form');
 const randomCountryBtn = document.getElementById('random-country-btn');
 
@@ -49,4 +51,6 @@ randomCountryBtn.addEventListener('click', async () => {
     } finally {
         toggleLoader(false);
     }
+});
+
 });

@@ -3,7 +3,7 @@ import { fetchRandomCountry } from '../scripts/api.js';
 /* Get DOM Elements */
 const currentflagImg = document.getElementById('current-flag-img');
 const guessSection = document.getElementById('guess-section');
-const flagGameLoader = document.getElementById('flag-loader');
+const flagGameLoader = document.getElementById('country-loader');
 const playButton = document.getElementById('play-game-btn');
 const submitGuessButton = document.getElementById('submit-guess-btn');
 const countryGuessInput = document.getElementById('country-guess-input');
@@ -18,8 +18,15 @@ let score = 0;
  * @param {boolean} visible - If true, shows the loader; otherwise hides it.
  */
 function toggleFlagGameLoader(visible) {
-    flagGameLoader.style.display = visible ? 'block' : 'none';
-    currentflagImg.classList.toggle('d-none', !visible);
+    if (flagGameLoader) {
+        if (visible) {
+            flagGameLoader.classList.remove('d-none'); // Show by removing d-none
+        } else {
+            flagGameLoader.classList.add('d-none'); // Hide by adding d-none
+        }
+    } else {
+        console.warn("Flag loader element (country-loader) not found!");
+    }
 };
 
 /** JSDOc comment - function displayFlag
@@ -101,6 +108,8 @@ async function startNewRound() {
     toggleGameControls(false);
     toggleFlagGameLoader(true);
 
+    currentflagImg.classList.add('d-none');
+
     try {
         const countryData = await fetchRandomCountry();
         currentCountry = countryData;
@@ -176,4 +185,5 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScoreDisplay();
     toggleGameControls(false);
     toggleFlagGameLoader(false);
+    currentflagImg.classList.add('d-none');
 });

@@ -7,7 +7,7 @@ describe('Score checks', () => {
     const mockFlagGamHTML =
         `<div id="flaggameflagimage" class="text-center">
             <img id="current-flag-img" src="" alt="Country Flag" class="img-fluid mb-3 mt-3 d-none">
-            <div id="flag-loader" class="loader d-none"></div>
+            <div id="country-loader" class="loader d-none"></div>
         </div>
         <div class="flag-game-controls text-center">
             <button id="play-game-btn" class="btn btn-primary mt-3">Play Game</button>
@@ -54,7 +54,7 @@ describe('Score checks', () => {
         const currentScore = document.getElementById('current-score');
         const flagImage = document.getElementById('current-flag-img');
         const guessSection = document.getElementById('guess-section');
-        const flagLoader = document.getElementById('flag-loader');
+        const flagLoader = document.getElementById('country-loader');
 
         expect(currentScore.textContent).toBe('0');
         expect(flagImage.classList.contains('d-none')).toBe(true);
