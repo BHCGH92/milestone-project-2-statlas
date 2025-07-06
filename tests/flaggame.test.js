@@ -2,8 +2,7 @@
  * @jest-environment jsdom
  */
 
-/* Tests for game initial game state to be correct (0 score etc) */
-describe('Flag Game Initial State', () => {
+describe('Score checks', () => {
     /*Select relevant ids of the html that needs to be tested */
     const mockFlagGamHTML =
         `<div id="flaggameflagimage" class="text-center">
@@ -23,10 +22,33 @@ describe('Flag Game Initial State', () => {
         </div>
     `;
 
-    beforeEach(() => {
+    let flagGameModule;
+
+    jest.mock('../scripts/api.js', () => ({
+        fetchRandomCountry: jest.fn(() => Promise.resolve({
+            name: 'France',
+            flagPng: 'france.png',
+            flagAlt: 'Flag of France'
+        })),
+    }));
+
+   beforeEach(async () => {
         // Set up the HTML structure for the flag game
         document.body.innerHTML = mockFlagGamHTML;
-    }); 
+        jest.resetModules(); 
+
+        flagGameModule = await import('../scripts/flaggame.js');
+
+        if (flagGameModule.resetGameForTesting) {
+            flagGameModule.resetGameForTesting();
+        }
+
+        document.dispatchEvent(new Event('DOMContentLoaded'));
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
 
     it("should have intial score of 0 and sections hidden until game starts", () => {
         const currentScore = document.getElementById('current-score');
@@ -38,5 +60,98 @@ describe('Flag Game Initial State', () => {
         expect(flagImage.classList.contains('d-none')).toBe(true);
         expect(guessSection.classList.contains('d-none')).toBe(true);
         expect(flagLoader.classList.contains('d-none')).toBe(true);
+    });
+
+    /* Incremenet score for correct answer  */
+    it("should increment the score when the correct guess is made", async () => {
+
+        const currentScore = document.getElementById('current-score');
+        const playButton = document.getElementById('play-game-btn');
+        const submitGuessButton = document.getElementById('submit-guess-btn');
+        const countryGuessInput = document.getElementById('country-guess-input');
+
+        playButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        countryGuessInput.value = 'France';
+
+        submitGuessButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(currentScore.textContent).toBe('1');
+
+    });
+
+    /* Score does not increase when giving an incorrect answer */
+    it("should not increment score when incorrect answer is given", async () => {
+
+        const currentScore = document.getElementById('current-score');
+        const submitGuessButton = document.getElementById('submit-guess-btn');
+        const countryGuessInput = document.getElementById('country-guess-input');
+        const playButton = document.getElementById('play-game-btn');
+
+        playButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        countryGuessInput.value = 'Germany';
+
+        submitGuessButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(currentScore.textContent).toBe('0');
+
+    });
+
+        /* Score decreases correctly on a wrong answer */
+    it("Score higher than 1 should result in the score being 0 when a wrong answer is provided", async () => {
+
+        const currentScore = document.getElementById('current-score');
+        const submitGuessButton = document.getElementById('submit-guess-btn');
+        const countryGuessInput = document.getElementById('country-guess-input');
+        const playButton = document.getElementById('play-game-btn');
+
+        for( let i = 0; i < 3; i++) {
+            playButton.click();
+            await new Promise(resolve => setTimeout(resolve, 0));
+
+            countryGuessInput.value = 'France';
+
+            submitGuessButton.click();
+            await new Promise(resolve => setTimeout(resolve, 0));
+        }
+
+        expect(currentScore.textContent).toBe('3');
+
+        playButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        countryGuessInput.value = 'Germany';
+
+        submitGuessButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(currentScore.textContent).toBe('2');
+
+    });
+       /* Score doesn't go below 0 */
+    it("Score does not go below 0", async () => {
+
+        const currentScore = document.getElementById('current-score');
+        const submitGuessButton = document.getElementById('submit-guess-btn');
+        const countryGuessInput = document.getElementById('country-guess-input');
+        const playButton = document.getElementById('play-game-btn');
+
+        expect(currentScore.textContent).toBe('0');
+
+        playButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        countryGuessInput.value = 'Germany';
+
+        submitGuessButton.click();
+        await new Promise(resolve => setTimeout(resolve, 0));
+
+        expect(currentScore.textContent).toBe('0');
+
     });
 });

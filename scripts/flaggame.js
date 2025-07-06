@@ -19,7 +19,7 @@ let score = 0;
  */
 function toggleFlagGameLoader(visible) {
     flagGameLoader.style.display = visible ? 'block' : 'none';
-    currentflagImg.classList.toggle('d-none', visible);
+    currentflagImg.classList.toggle('d-none', !visible);
 };
 
 /** JSDOc comment - function displayFlag
@@ -28,9 +28,9 @@ function toggleFlagGameLoader(visible) {
  * @param {string} flatAlt - The alt text for the flag image.
  */
 function displayFlag(flagPng, flagAlt) {
-    current.FlagImg.src = flagPng;
-    currentFlagImg.alt = flagAlt;
-    currentFlagImg.classList.remove('d-none');
+    currentflagImg.src = flagPng;
+    currentflagImg.alt = flagAlt;
+    currentflagImg.classList.remove('d-none');
 };
 
 /**
@@ -77,7 +77,7 @@ function showMessage(message, type = "info") {
         'error': 'alert-danger',
         'info': 'alert-info',
         'warning': 'alert-warning'
-    } [type] || 'alert-info'; /* Default to info */
+    }[type] || 'alert-info'; /* Default to info */
 
     const messageHtml = `
     <div class="row justify-content-center mt-3">
