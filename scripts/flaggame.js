@@ -113,7 +113,17 @@ async function startNewRound() {
     try {
         const countryData = await fetchRandomCountry();
         currentCountry = countryData;
-        displayFlag(countryData.flagPng, countryData.flagAlt);
+        /* escapeRegex helps clean country names with special characters so I can remove the flag name from alt text */
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        const escapedCountryName = escapeRegex(currentCountry.name);
+
+        const regex = new RegExp(`\\b${escapedCountryName}\\b`, 'gi');
+        const cleanFlagAlt = countryData.flagAlt.replace(regex, '??'); // Remove country name from alt text
+        /* Pass cleaned alt text through to prevent cheating and more accessbility for screen reader players */
+        displayFlag(countryData.flagPng, cleanFlagAlt);
         toggleGameControls(true);
         countryGuessInput.focus();
         showMessage(`Guess the country for the flag shown!`, 'info');
