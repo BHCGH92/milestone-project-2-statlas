@@ -1,5 +1,5 @@
 /* Import functions from our api.js and ui.js files */
-import { fetchCountryByName, fetchCountryByNameExact, fetchRandomCountry, transformCountryData } from './api.js';
+import { fetchCountryByNameExact, fetchRandomCountry } from './api.js';
 import { clearDisplay, displayCountry, showMessage, toggleLoader } from './ui.js';
 
 document.addEventListener('DOMContentLoaded', () => {

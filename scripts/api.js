@@ -31,8 +31,7 @@ export function transformCountryData(countryData) {
 export async function fetchCountryByName(countryName) {
     /* Call API and await response */
     try {
-        const response = await fetch
-            (`https://restcountries.com/v3.1/name/${countryName}`);
+        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
         /* Check if the response is ok, if not handle it and throw an error */
         if (!response.ok) {
             const errorBody = await response.json();
