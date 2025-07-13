@@ -8,12 +8,9 @@ export function transformCountryData(countryData) {
     return {
         name: countryData.name.common,
         capital: countryData.capital?.[0] ?? "No capital",
-        currencyName: Object.values(countryData.currencies
-             ?? {})[0]?.name ?? "No currency",
-        currencySymbol: Object.values(countryData.currencies 
-            ?? {})[0]?.symbol ?? "No symbol",
-        languages: Object.values(countryData.languages 
-            ?? {}).join(", ") || "No languages",
+        currencyName: Object.values(countryData.currencies ?? {})[0]?.name ?? "No currency",
+        currencySymbol: Object.values(countryData.currencies ?? {})[0]?.symbol ?? "No symbol",
+        languages: Object.values(countryData.languages ?? {}).join(", ") || "No languages",
         population: countryData.population ?? "N/A",
         flagPng: countryData.flags?.png ?? "No flag image",
         flagAlt: countryData.flags?.alt ?? "No flag description"
@@ -42,9 +39,6 @@ export async function fetchCountryByName(countryName) {
 
         const dataArray = await response.json();
 
-        if (!dataArray || dataArray.length === 0) {
-            throw new Error(`No results for country "${countryName}"`);
-        }
         /* Successful - Transform data */
         return transformCountryData(dataArray[0]);
 
@@ -75,9 +69,6 @@ export async function fetchCountryByNameExact(countryName) {
 
         const dataArray = await response.json();
 
-        if (!dataArray || dataArray.length === 0) {
-            throw new Error(`No results for country "${countryName}"`);
-        }
         /* Successful - Transform data */
         return transformCountryData(dataArray[0]);
 
