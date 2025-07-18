@@ -2,6 +2,7 @@
 const countryDisplay = document.getElementById("countryDisplay");
 const errorHandle = document.getElementById("errorHandle");
 const loader = document.getElementById('country-loader');
+const loadertext = document.getElementById('country-loader-text');
 
 
 /* Clear down the display before presenting a new one */
@@ -16,6 +17,7 @@ export function clearDisplay() {
  */
 export function toggleLoader(visible) {
     loader.style.display = visible ? 'block' : 'none';
+    loadertext.style.display = visible ? 'block' : 'none';
 }
 
 /** JSDoc comment - function showMessage

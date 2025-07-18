@@ -16,7 +16,7 @@ searchForm.addEventListener('submit', async (event) => {
 
     clearDisplay(); /* Clear previous results */
     toggleLoader(true); /* Show the loader - for slower speeds */
-    // debugger; - Uncomment to debug to see the loader in action
+    //debugger; - debugging line to test loader functionality
 
     if (!countryName) {
         showMessage('Please enter a country name.', 'warning');

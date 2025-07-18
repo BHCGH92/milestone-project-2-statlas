@@ -4,6 +4,7 @@ import { fetchRandomCountry } from '../scripts/api.js';
 const currentflagImg = document.getElementById('current-flag-img');
 const guessSection = document.getElementById('guess-section');
 const flagGameLoader = document.getElementById('country-loader');
+const flagLoaderText = document.getElementById('country-loader-text');
 const playButton = document.getElementById('play-game-btn');
 const submitGuessButton = document.getElementById('submit-guess-btn');
 const countryGuessInput = document.getElementById('country-guess-input');
@@ -20,9 +21,11 @@ let score = 0;
 function toggleFlagGameLoader(visible) {
     if (flagGameLoader) {
         if (visible) {
-            flagGameLoader.classList.remove('d-none'); // Show by removing d-none
+            flagGameLoader.classList.remove('d-none');
+            flagLoaderText.classList.remove('d-none');
         } else {
-            flagGameLoader.classList.add('d-none'); // Hide by adding d-none
+            flagGameLoader.classList.add('d-none');
+            flagLoaderText.classList.add('d-none');
         }
     } else {
         console.warn("Flag loader element (country-loader) not found!");

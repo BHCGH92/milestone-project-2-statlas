@@ -179,7 +179,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
+  max-width: 800px;
 }
 
 .country-display-card:hover {
