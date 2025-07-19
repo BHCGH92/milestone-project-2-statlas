@@ -9,6 +9,9 @@ describe('Score checks', () => {
             <img id="current-flag-img" src="" alt="Country Flag" class="img-fluid mb-3 mt-3 d-none">
             <div id="country-loader" class="loader d-none"></div>
         </div>
+            <div id="country-loader-text" class="text-light text-center mt-3 d-none">
+               <p>Loading country data...</p>
+           </div>
         <div class="flag-game-controls text-center">
             <button id="play-game-btn" class="btn btn-primary mt-3">Play Game</button>
             <div id="guess-section" class="mt-3 d-none">
@@ -32,10 +35,10 @@ describe('Score checks', () => {
         })),
     }));
 
-   beforeEach(async () => {
+    beforeEach(async () => {
         // Set up the HTML structure for the flag game
         document.body.innerHTML = mockFlagGamHTML;
-        jest.resetModules(); 
+        jest.resetModules();
 
         flagGameModule = await import('../scripts/flaggame.js');
 
@@ -102,15 +105,15 @@ describe('Score checks', () => {
 
     });
 
-        /* Score decreases correctly on a wrong answer */
-    it("Score higher than 1 should result in the score being 0 when a wrong answer is provided", async () => {
+    /* Score decreases correctly on a wrong answer */
+    it("Score greater than 0 should decrement by 1 with an incorrect answer", async () => {
 
         const currentScore = document.getElementById('current-score');
         const submitGuessButton = document.getElementById('submit-guess-btn');
         const countryGuessInput = document.getElementById('country-guess-input');
         const playButton = document.getElementById('play-game-btn');
 
-        for( let i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
             playButton.click();
             await new Promise(resolve => setTimeout(resolve, 0));
 
@@ -133,7 +136,7 @@ describe('Score checks', () => {
         expect(currentScore.textContent).toBe('2');
 
     });
-       /* Score doesn't go below 0 */
+    /* Score doesn't go below 0 */
     it("Score does not go below 0", async () => {
 
         const currentScore = document.getElementById('current-score');
