@@ -46,8 +46,8 @@ export function showMessage(message, type = "error") {
  */
 export function displayCountry(countryData) {
     const countryHtml = `
-    <div class="row justify-content-center mt-3">
-          <div class="col-md-8">
+        <div class="row justify-content-center mt-3">
+          <div class="col-12 col-md-10">
               <div class="country-wrapper">
                   <div class="country-display-card">
                       <div>

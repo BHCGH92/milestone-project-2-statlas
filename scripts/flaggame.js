@@ -38,6 +38,11 @@ function toggleFlagGameLoader(visible) {
  * @param {string} flatAlt - The alt text for the flag image.
  */
 function displayFlag(flagPng, flagAlt) {
+    currentflagImg.classList.add('d-none');
+    currentflagImg.src = "",
+    currentflagImg.alt = "",
+
+
     currentflagImg.src = flagPng;
     currentflagImg.alt = flagAlt;
     currentflagImg.classList.remove('d-none');
