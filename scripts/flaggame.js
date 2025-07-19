@@ -120,7 +120,7 @@ async function startNewRound() {
     try {
         const countryData = await fetchRandomCountry();
         currentCountry = countryData;
-        
+
         function escapeRegex(string) {
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }

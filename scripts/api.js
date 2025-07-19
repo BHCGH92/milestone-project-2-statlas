@@ -31,7 +31,7 @@ export async function fetchCountryByName(countryName) {
         if (!response.ok) {
             const errorBody = await response.json();
             const errorMessage = errorBody.message ||
-             `HTTP error! status: ${response.status}`;
+                `HTTP error! status: ${response.status}`;
             throw new Error(errorMessage);
         }
 
@@ -105,11 +105,11 @@ export async function fetchCountryList() {
 
 export function getRandomCountry(countryNames) {
     if (!countryNames || countryNames.length === 0) {
-    console.warn("getRandomCountry was called with an empty array.");
-    return undefined;
-  }
-  const randomIndex = Math.floor(Math.random() * countryNames.length);
-  return countryNames[randomIndex];
+        console.warn("getRandomCountry was called with an empty array.");
+        return undefined;
+    }
+    const randomIndex = Math.floor(Math.random() * countryNames.length);
+    return countryNames[randomIndex];
 }
 
 /** 
