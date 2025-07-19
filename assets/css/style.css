@@ -253,17 +253,26 @@ p {
     .info-title {
         font-size: 1.5rem;
     }
+
+    div p {
+        font-size: 1.2rem;
+    }
+    
+    div h2 {
+        font-size: 1.5rem;
+    }
 }
 
-/* Gives the hamburger menu the blur background
-@media (max-width: 991.98px) {
-    .navbar-collapse.collapse.show {
-        background-color: rgba(90, 24, 154, 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 0.5rem;
-        padding: 1rem;
-        margin-top: 0.5rem;
+@media screen and (min-width: 1024px) {
+    div p {
+        font-size: 1.5rem;
     }
 
-} */
+    .info-title {
+        font-size: 2rem;
+    }
+
+     div h2 {
+        font-size: 2.5rem;
+    }
+}
