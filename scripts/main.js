@@ -1,4 +1,3 @@
-/* Import functions from our api.js and ui.js files */
 import { fetchCountryByNameExact, fetchRandomCountry } from './api.js';
 import { clearDisplay, displayCountry, showMessage, toggleLoader } from './ui.js';
 
@@ -14,8 +13,8 @@ searchForm.addEventListener('submit', async (event) => {
     const formData = new FormData(searchForm);
     const countryName = formData.get('country-search').trim();
 
-    clearDisplay(); /* Clear previous results */
-    toggleLoader(true); /* Show the loader - for slower speeds */
+    clearDisplay();
+    toggleLoader(true);
     //debugger; - debugging line to test loader functionality
 
     if (!countryName) {
@@ -26,13 +25,13 @@ searchForm.addEventListener('submit', async (event) => {
 
     try {
         const countryData = await fetchCountryByNameExact(countryName);
-        displayCountry(countryData); /* Display the country data */
+        displayCountry(countryData);
     } catch (error) {
         console.log("An error was caught in main.js:", error);
         const message = "There was an issue fetching the country data, check your spelling and try again. The spelling must be exact.";
-        showMessage(message, 'error'); /* Display the error message */
+        showMessage(message, 'error');
     } finally {
-        toggleLoader(false); /* Hide the loader - this always runs*/
+        toggleLoader(false);
     }
 
 });

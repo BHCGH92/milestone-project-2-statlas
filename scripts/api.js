@@ -26,10 +26,8 @@ export function transformCountryData(countryData) {
  */
 
 export async function fetchCountryByName(countryName) {
-    /* Call API and await response */
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
-        /* Check if the response is ok, if not handle it and throw an error */
         if (!response.ok) {
             const errorBody = await response.json();
             const errorMessage = errorBody.message ||
@@ -39,11 +37,9 @@ export async function fetchCountryByName(countryName) {
 
         const dataArray = await response.json();
 
-        /* Successful - Transform data */
         return transformCountryData(dataArray[0]);
 
     } catch (error) {
-        /* Error section */
         console.error("Error fetching country data:", error);
         throw error;
     }
@@ -57,10 +53,8 @@ export async function fetchCountryByName(countryName) {
  */
 
 export async function fetchCountryByNameExact(countryName) {
-    /* Call API and await response */
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
-        /* Check if the response is ok, if not handle it and throw an error */
         if (!response.ok) {
             const errorBody = await response.json();
             const errorMessage = errorBody.message || `HTTP error! status: ${response.status}`;
@@ -69,11 +63,9 @@ export async function fetchCountryByNameExact(countryName) {
 
         const dataArray = await response.json();
 
-        /* Successful - Transform data */
         return transformCountryData(dataArray[0]);
 
     } catch (error) {
-        /* Error section */
         console.error("Error fetching country data:", error);
         throw error;
     }
@@ -129,16 +121,11 @@ export function getRandomCountry(countryNames) {
 
 export async function fetchRandomCountry() {
     try {
-        /* Get a full list of countries */
         const countryNames = await fetchCountryList();
-        /* Get the random country name */
         const randomName = getRandomCountry(countryNames);
-        /* Call the api with the random name */
         const countryData = await fetchCountryByName(randomName);
         return countryData;
     } catch (error) {
-        // If any step fails, log it and pass 
-        // the error up to the event listener.
         console.error("The process to fetch random country data failed in api.js:", error);
         throw error;
     }

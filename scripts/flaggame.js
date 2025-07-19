@@ -33,7 +33,7 @@ function toggleFlagGameLoader(visible) {
 };
 
 /** JSDOc comment - function displayFlag
- * Display the flag image in the img element.
+ * Display the flag image in the img element (clears it first to stop any overlap).
  * @param {string} flagPng - The URL of the flag image to display.
  * @param {string} flatAlt - The alt text for the flag image.
  */
@@ -53,7 +53,6 @@ function displayFlag(flagPng, flagAlt) {
 function clearGameDisplay() {
     gameMessageDiv.innerHTML = '';
     countryGuessInput.value = '';
-    /* Removes bootstrap validation styling */
     countryGuessInput.classList.remove('is-invalid', 'is-valid');
 };
 
@@ -109,6 +108,7 @@ function showMessage(message, type = "info") {
 /**
  * Initiate new game
  * Clears relevant sections, fetches a flag and prepares the game for play.
+ * Clears country name from the alt text using escapeRegex
  */
 async function startNewRound() {
     clearGameDisplay();
@@ -120,7 +120,7 @@ async function startNewRound() {
     try {
         const countryData = await fetchRandomCountry();
         currentCountry = countryData;
-        /* escapeRegex helps clean country names with special characters so I can remove the flag name from alt text */
+        
         function escapeRegex(string) {
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         }
@@ -128,8 +128,7 @@ async function startNewRound() {
         const escapedCountryName = escapeRegex(currentCountry.name);
 
         const regex = new RegExp(`\\b${escapedCountryName}\\b`, 'gi');
-        const cleanFlagAlt = countryData.flagAlt.replace(regex, '??'); // Remove country name from alt text
-        /* Pass cleaned alt text through to prevent cheating and more accessbility for screen reader players */
+        const cleanFlagAlt = countryData.flagAlt.replace(regex, '??');
         displayFlag(countryData.flagPng, cleanFlagAlt);
         toggleGameControls(true);
         countryGuessInput.focus();
@@ -149,7 +148,7 @@ async function startNewRound() {
  */
 
 function checkGuess() {
-    /* Prevent guess if no flag is shown. */
+
     if (!currentCountry) {
         showMessage('No flag to guess. Please start a new game.', 'warning');
         return;
@@ -174,7 +173,7 @@ function checkGuess() {
         toggleGameControls(false);
         playButton.textContent = 'Play next flag!'
     } else {
-        score = Math.max(0, score - 1);  /* Ensure score doesn't go below 0 */
+        score = Math.max(0, score - 1);
         updateScoreDisplay();
         showMessage(`Incorrect! The correct answer was ${currentCountry.name}.`, 'error');
         countryGuessInput.classList.remove('is-valid');
@@ -193,8 +192,8 @@ submitGuessButton.addEventListener('click', checkGuess);
 
 countryGuessInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-        event.preventDefault();  /* Prevent form submission */
-        submitGuessButton.click();  /* Trigger the guess submission */
+        event.preventDefault();
+        submitGuessButton.click();
     }
 });
 
