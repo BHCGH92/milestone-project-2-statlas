@@ -7,6 +7,7 @@
 export function transformCountryData(countryData) {
     return {
         name: countryData.name.common,
+        continent: countryData.continents,
         capital: countryData.capital?.[0] ?? "No capital",
         currencyName: Object.values(countryData.currencies ?? {})[0]?.name ?? "No currency",
         currencySymbol: Object.values(countryData.currencies ?? {})[0]?.symbol ?? "No symbol",
