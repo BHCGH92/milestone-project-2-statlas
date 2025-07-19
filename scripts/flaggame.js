@@ -42,7 +42,6 @@ function displayFlag(flagPng, flagAlt) {
     currentflagImg.src = "",
     currentflagImg.alt = "",
 
-
     currentflagImg.src = flagPng;
     currentflagImg.alt = flagAlt;
     currentflagImg.classList.remove('d-none');
