@@ -3,11 +3,10 @@
 * @param {object} countryData - The raw country data from the API.
 * @returns {object} - Transformed country data with specific fields.
 */
-
 export function transformCountryData(countryData) {
     return {
         name: countryData.name.common,
-        continent: countryData.continents,
+        continent: Object.values(countryData.continents ?? {}).join(", ") || "No continent logged",
         capital: countryData.capital?.[0] ?? "No capital",
         currencyName: Object.values(countryData.currencies ?? {})[0]?.name ?? "No currency",
         currencySymbol: Object.values(countryData.currencies ?? {})[0]?.symbol ?? "No symbol",
